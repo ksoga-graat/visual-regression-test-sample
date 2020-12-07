@@ -3,10 +3,12 @@
 
 ## 体験手順
 
-### 前提条件
+### 動作確認条件
 
-* node version: 12 ~
-* cypress version: ^6.0.1
+* node version: >=12
+* cypress version: 6.0.1
+
+上記は筆者の動作させた環境となりますが、nodeのバージョンが異なっても、**恐らく**動きます
 
 ### 1. nodeのインストール
 
@@ -108,3 +110,33 @@ context("index.html", () => {
   });
 });
 ```
+
+### VisualRegressionTest用のプラグインを導入する
+
+
+VisualRegressionTestをCypressで実行するために、次のプラグインを利用します。
+
+[Cypress Image Snapshot](https://github.com/jaredpalmer/cypress-image-snapshot)
+
+```sh
+npm install --save-dev cypress-image-snapshot
+```
+
+`./cypress/plugins/index.js`に以下の内容をコピペする
+```index.js
+const {
+  addMatchImageSnapshotPlugin,
+} = require('cypress-image-snapshot/plugin');
+
+module.exports = (on, config) => {
+  addMatchImageSnapshotPlugin(on, config);
+};
+```
+
+`./cypress/support/commands.js`に以下の内容をコピペする
+```commands.js
+import { addMatchImageSnapshotCommand } from 'cypress-image-snapshot/command';
+
+addMatchImageSnapshotCommand();
+```
+
