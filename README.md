@@ -26,3 +26,9 @@ v12.15.0
 ```sh
 mkdir visual-regression-test-sample & cd visual-regression-test-sample
 ```
+
+### 4. package.jsonの作成
+
+```sh
+npm init -y
+```
