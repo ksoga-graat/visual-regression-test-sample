@@ -99,7 +99,7 @@ context("index.html", () => {
 ### 9. テストを成功させる
 
 以下の内容を`index.spec.js`にコピペ
-```
+```js
 context("index.html", () => {
   beforeEach(() => {
     cy.visit("http://127.0.0.1:8080");
@@ -123,7 +123,7 @@ npm install --save-dev cypress-image-snapshot
 ```
 
 `./cypress/plugins/index.js`に以下の内容をコピペする
-```index.js
+```js
 const {
   addMatchImageSnapshotPlugin,
 } = require('cypress-image-snapshot/plugin');
@@ -139,4 +139,22 @@ import { addMatchImageSnapshotCommand } from 'cypress-image-snapshot/command';
 
 addMatchImageSnapshotCommand();
 ```
+### VisualRegressionTestの基準となる画像を作成する
 
+`./cypress/integration/index.spec.js`に以下をコピペする
+```js
+context("index.html", () => {
+  beforeEach(() => {
+    cy.visit("http://127.0.0.1:8080");
+  });
+
+  it("Layout is not broken", () => {
+    cy.matchImageSnapshot();
+  });
+});
+```
+
+以下を実行する
+```sh
+./node_modules/.bin/cypress run
+```
