@@ -32,3 +32,25 @@ mkdir visual-regression-test-sample & cd visual-regression-test-sample
 ```sh
 npm init -y
 ```
+
+### 5. 確認用HTMLの作成
+
+```
+mkdir public
+echo "<h1>visual-regression-test-sample</h1><p>これは、12/13アドベントカレンダーのサンプルプログラムです。</p>"
+```
+
+### 6. サーバーを実行して、HTMLの確認
+
+```sh
+$ npx http-server public/
+
+Starting up http-server, serving public/
+Available on:
+  http://127.0.0.1:8080
+  http://192.168.3.6:8080
+  http://192.168.3.12:8080
+Hit CTRL-C to stop the server
+```
+
+表示されているローカルホスト:Portにアクセスすると、ページが表示されるはずです。
