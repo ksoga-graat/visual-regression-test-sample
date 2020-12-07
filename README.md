@@ -158,3 +158,20 @@ context("index.html", () => {
 ```sh
 ./node_modules/.bin/cypress run
 ```
+
+### レイアウトが崩れるような修正をする
+
+`./public/index.html`に以下をコピペする
+
+(例: 他人が勝手にpタグのスタイルを追加してしまった)
+
+```html
+<h1>visual-regression-test-sample</h1>
+<p style="margin:8px">これは、12/13アドベントカレンダーのサンプルプログラムです。</p>
+
+```
+
+テストを実行する
+```sh
+./node_modules/.bin/cypress run
+```
