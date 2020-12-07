@@ -175,3 +175,5 @@ context("index.html", () => {
 ```sh
 ./node_modules/.bin/cypress run
 ```
+
+![faild.png](https://github.com/ksoga-graat/visual-regression-test-sample/blob/main/documents/snapshots/index.spec.js/__diff_output__/index.html--Layout-is-not-broken.diff.png)
