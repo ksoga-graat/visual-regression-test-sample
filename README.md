@@ -20,3 +20,9 @@ Windowsの人は、[nodejs](https://nodejs.org/ja/download/)より、インス�
 $ node -v
 v12.15.0
 ```
+
+### 3. ディレクトリの作成&移動
+
+```sh
+mkdir visual-regression-test-sample & cd visual-regression-test-sample
+```
