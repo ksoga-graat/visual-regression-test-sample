@@ -54,3 +54,11 @@ Hit CTRL-C to stop the server
 ```
 
 表示されているローカルホスト:Portにアクセスすると、ページが表示されるはずです。
+
+
+### 7. Cypressのインストール&cypress.jsonの作成
+
+```sh
+npm install cypress --save-dev
+echo "{}"> cypress.json
+```

@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/ksoga-graat/visual-regression-test-sample/issues"
   },
-  "homepage": "https://github.com/ksoga-graat/visual-regression-test-sample#readme"
+  "homepage": "https://github.com/ksoga-graat/visual-regression-test-sample#readme",
+  "devDependencies": {
+    "cypress": "^6.0.1"
+  }
 }
