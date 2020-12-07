@@ -7,3 +7,16 @@
 
 * node version: 12 ~
 * cypress version: ^6.0.1
+
+### 1. nodeのインストール
+
+Macの人は、[nodebrew](https://github.com/hokaccha/nodebrew)を利用してインストールすると、簡単です。
+
+Windowsの人は、[nodejs](https://nodejs.org/ja/download/)より、インストールを行ってください
+
+### 2. nodeがインストールできたことの確認
+
+```sh
+$ node -v
+v12.15.0
+```
