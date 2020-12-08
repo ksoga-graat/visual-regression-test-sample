@@ -32,7 +32,13 @@ mkdir visual-regression-test-sample
 cd visual-regression-test-sample
 ```
 
-### 4. 開発に必要なライブラリをインストール
+
+### 4. nodeプロジェクトの初期化
+
+```sh
+npm init -y
+```
+### 5. 開発に必要なライブラリをインストール
 
 cypressのサイズが大きいので、インストールに少し時間がかかります。
 
@@ -41,7 +47,7 @@ npm install http-server
 npm install cypress
 ```
 
-### 5. 確認用HTMLの作成
+### 6. 確認用HTMLの作成
 
 ```sh
 mkdir public
@@ -55,7 +61,7 @@ touch public/index.html
 <p>これは、12/13アドベントカレンダーのサンプルプログラムです。</p>
 ```
 
-### 6. サーバーを実行して、HTMLの確認
+### 7. サーバーを実行して、HTMLの確認
 
 ローカルHTTPサーバを実行する
 **以降の手順は、別のターミナルで行ってください。**
@@ -68,7 +74,7 @@ npx http-server -c-1 public/
 ![access.png](https://github.com/ksoga-graat/visual-regression-test-sample/blob/main/documents/screenshots/127.0.0.1_8081_.png)
 
 
-### 7. Cypressのインストール&cypress.jsonの作成
+### 8. Cypressのインストール&cypress.jsonの作成
 
 Cypressの設定ファイルを作成する
 ```sh
@@ -80,7 +86,7 @@ touch cypress.json
 {}
 ```
 
-### 8. テストファイルの作成
+### 9. テストファイルの作成
 
 テストファイルを作成する
 ```sh
@@ -101,7 +107,7 @@ context("index.html", () => {
 });
 ```
 
-### 9. Cypressが動作することの確認
+### 10. Cypressが動作することの確認
 
 Cypressを実行する
 ```sh
@@ -112,7 +118,7 @@ npx cypress run
 
 ![first-test.png](https://github.com/ksoga-graat/visual-regression-test-sample/blob/main/documents/screenshots/first-test.png)
 
-### 10. VisualRegressionTest用のプラグインを導入する
+### 11. VisualRegressionTest用のプラグインを導入する
 
 
 VisualRegressionTestをCypressで実行するために、次のプラグインを利用します。
@@ -142,7 +148,7 @@ import { addMatchImageSnapshotCommand } from 'cypress-image-snapshot/command';
 
 addMatchImageSnapshotCommand();
 ```
-### 11. VisualRegressionTestの基準となる画像を作成する
+### 12. VisualRegressionTestの基準となる画像を作成する
 
 `./cypress/integration/index.spec.js`に以下をコピペする
 ```js
@@ -166,7 +172,7 @@ npx cypress run
 
 ![base-snapshot.png](https://github.com/ksoga-graat/visual-regression-test-sample/blob/main/documents/screenshots/first-test.png)
 
-### 12. レイアウトが崩れるような修正をする
+### 13. レイアウトが崩れるような修正をする
 
 `./public/index.html`に以下をコピペする
 
