@@ -101,7 +101,7 @@ context("index.html", () => {
 
 ローカルHTTPサーバーを実行する。
 ```sh
- npx http-server public/
+ ./node_modules/.bin/http-server http-server public/
 ```
 
 Cypressを実行する
