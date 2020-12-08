@@ -101,7 +101,7 @@ context("index.html", () => {
 
 ローカルHTTPサーバーを実行する。
 ```sh
- npx http-server public/ &
+ npx http-server public/
 ```
 
 Cypressを実行する
@@ -123,7 +123,7 @@ VisualRegressionTestをCypressで実行するために、次のプラグイン�
 `cypress-image-snapshot`をインストールする
 
 ```sh
-npm install --save-dev cypress-image-snapshot
+npm install cypress-image-snapshot
 ```
 
 `./cypress/plugins/index.js`の中身を消して、以下の内容をコピペする
