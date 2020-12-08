@@ -5,6 +5,7 @@
 
 ### 動作確認条件
 
+* OS: MacOS | Linux
 * node version: 12
 * cypress version: 6.0.1
 
@@ -56,7 +57,7 @@ touch public/index.html
 
 ローカルHTTPサーバを実行する
 ```sh
-./node_modules/.bin/http-server public/
+npx http-server public/
 ```
 
 表示されている`ローカルホスト:Port`にアクセスすると、以下のようなページが表示されるはずです。
@@ -84,7 +85,7 @@ mkdir -p ./cypress/integration
 touch cypress/integration/index.spec.js
 ```
 
-以下の内容を`./cypress/integration//index.spec.js`にコピペ
+以下の内容を`./cypress/integration/index.spec.js`にコピペ
 ```
 context("index.html", () => {
   beforeEach(() => {
@@ -101,12 +102,12 @@ context("index.html", () => {
 
 ローカルHTTPサーバーを実行する。
 ```sh
- ./node_modules/.bin/http-server http-server public/
+ npx http-server http-server public/
 ```
 
 Cypressを実行する
 ```sh
-./node_modules/.bin/cypress run
+npx cypress run
 ```
 
 以下のようにテストが実行されていれば良いです。
@@ -160,7 +161,7 @@ context("index.html", () => {
 
 以下を実行する
 ```sh
-./node_modules/.bin/cypress run
+npx cypress run
 ```
 
 以下のようにテストが成功していれば良いです。
@@ -182,7 +183,7 @@ context("index.html", () => {
 
 テストを実行する
 ```sh
-./node_modules/.bin/cypress run
+npx cypress run
 ```
 
 以下のようにテストが失敗していれば、VisualRegressionTestが実行されて、レイアウトの崩れを検知している。
