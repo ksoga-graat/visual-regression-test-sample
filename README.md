@@ -5,7 +5,7 @@
 
 ### 動作確認条件
 
-* node version: >=12
+* node version: 12
 * cypress version: 6.0.1
 
 上記は筆者の動作させた環境となりますが、nodeのバージョンが異なっても、**恐らく**動きます
@@ -27,13 +27,15 @@ v12.15.0
 ### 3. ディレクトリの作成&移動
 
 ```sh
-mkdir visual-regression-test-sample & cd visual-regression-test-sample
+mkdir visual-regression-test-sample
+cd visual-regression-test-sample
 ```
 
-### 4. package.jsonの作成
+### 4. 開発に必要なライブラリをインストール
 
 ```sh
-npm init -y
+npm install http-server
+npm install cypress
 ```
 
 ### 5. 確認用HTMLの作成
@@ -54,7 +56,7 @@ touch public/index.html
 
 ローカルHTTPサーバを実行する
 ```sh
-npx http-server public/
+./node_modules/.bin/http-server public/
 ```
 
 表示されている`ローカルホスト:Port`にアクセスすると、以下のようなページが表示されるはずです。
@@ -63,11 +65,6 @@ npx http-server public/
 
 
 ### 7. Cypressのインストール&cypress.jsonの作成
-
-Cypressをインストールする
-```sh
-npm install cypress --save-dev
-```
 
 Cypressの設定ファイルを作成する
 ```sh

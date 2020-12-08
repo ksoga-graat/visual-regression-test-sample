@@ -19,6 +19,7 @@
   "homepage": "https://github.com/ksoga-graat/visual-regression-test-sample#readme",
   "devDependencies": {
     "cypress": "^6.0.1",
-    "cypress-image-snapshot": "^4.0.0"
+    "cypress-image-snapshot": "^4.0.0",
+    "http-server": "^0.12.3"
   }
 }
