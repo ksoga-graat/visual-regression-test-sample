@@ -169,6 +169,7 @@ npx cypress run
 ```
 
 以下のようにテストが成功していれば良いです。
+今回の実行結果は、`./cypress/snapshots/index.spec.js/index.html -- Layout is not broken.snap.png`に保存されており、これが基準となります。
 
 ![base-snapshot.png](https://github.com/ksoga-graat/visual-regression-test-sample/blob/main/documents/screenshots/first-test.png)
 
