@@ -34,6 +34,8 @@ cd visual-regression-test-sample
 
 ### 4. 開発に必要なライブラリをインストール
 
+cypressのサイズが大きいので、インストールに少し時間がかかります。
+
 ```sh
 npm install http-server
 npm install cypress
@@ -56,8 +58,9 @@ touch public/index.html
 ### 6. サーバーを実行して、HTMLの確認
 
 ローカルHTTPサーバを実行する
+**以降の手順は、別のターミナルで行ってください。**
 ```sh
-npx http-server public/
+npx http-server -c-1 public/
 ```
 
 表示されている`ローカルホスト:Port`にアクセスすると、以下のようなページが表示されるはずです。
@@ -100,11 +103,6 @@ context("index.html", () => {
 
 ### 9. Cypressが動作することの確認
 
-ローカルHTTPサーバーを実行する。
-```sh
- npx http-server http-server public/
-```
-
 Cypressを実行する
 ```sh
 npx cypress run
@@ -127,7 +125,7 @@ VisualRegressionTestをCypressで実行するために、次のプラグイン�
 npm install cypress-image-snapshot
 ```
 
-`./cypress/plugins/index.js`の中身を消して、以下の内容をコピペする
+手順10でCypressを実行したときに、自動生成されている`./cypress/plugins/index.js`の中身を消して、以下の内容をコピペする
 ```js
 const {
   addMatchImageSnapshotPlugin,
@@ -138,7 +136,7 @@ module.exports = (on, config) => {
 };
 ```
 
-`./cypress/support/commands.js`の中身を消して、以下の内容をコピペする
+手順10でCypressを実行したときに、自動生成されている`./cypress/support/commands.js`の中身を消して、以下の内容をコピペする
 ```commands.js
 import { addMatchImageSnapshotCommand } from 'cypress-image-snapshot/command';
 
