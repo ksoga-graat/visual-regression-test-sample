@@ -15,17 +15,20 @@
 
 Macの人は、[nodebrew](https://github.com/hokaccha/nodebrew)を利用してインストールすると、簡単です。
 
-Windowsの人は、[nodejs](https://nodejs.org/ja/download/)より、インストールを行ってください
+Windowsの人は、[nodejs](https://nodejs.org/ja/download/)より、インストールを行ってください。
 
 ### 2. nodeがインストールできたことの確認
 
-nodeにパスが通っていることを確認する
+nodeにパスが通っていることを確認します。
+
 ```sh
 node -v
 v12.15.0
 ```
 
 ### 3. ディレクトリの作成&移動
+
+今回の作業用のディレクトリを作成して、移動します。
 
 ```sh
 mkdir visual-regression-test-sample
@@ -35,12 +38,14 @@ cd visual-regression-test-sample
 
 ### 4. nodeプロジェクトの初期化
 
+npmを利用するため、nodeプロジェクトをセットアップします。
+
 ```sh
 npm init -y
 ```
 ### 5. 開発に必要なライブラリをインストール
 
-cypressのサイズが大きいので、インストールに少し時間がかかります。
+Cypressのサイズが大きいので、インストールに少し時間がかかります。
 
 ```sh
 npm install http-server
@@ -49,12 +54,14 @@ npm install cypress
 
 ### 6. 確認用HTMLの作成
 
+VisualRegressionTestの体験をするときに利用する簡単なページを作成します。
+
 ```sh
 mkdir public
 touch public/index.html
 ```
 
-`./public/index.html`に以下の内容をコピペする
+`./public/index.html`に以下の内容をコピペします。
 
 ```
 <h1>visual-regression-test-sample</h1>
@@ -63,38 +70,43 @@ touch public/index.html
 
 ### 7. サーバーを実行して、HTMLの確認
 
-ローカルHTTPサーバを実行する
+手順6で作成したHTMLを、ローカルのみに公開します。
+
 **以降の手順は、別のターミナルで行ってください。**
 ```sh
 npx http-server -c-1 public/
 ```
 
-表示されている`ローカルホスト:Port`にアクセスすると、以下のようなページが表示されるはずです。
+表示されている`ローカルホスト:Port`にアクセスすると、以下のようなページが表示されます。
 
 ![access.png](https://github.com/ksoga-graat/visual-regression-test-sample/blob/main/documents/screenshots/127.0.0.1_8081_.png)
 
 
-### 8. Cypressのインストール&cypress.jsonの作成
+### 8. Cypressのインストール & Cypressのセットアップ
 
-Cypressの設定ファイルを作成する
+VisualRegressionTestのために利用するCypressの設定ファイルを作成します。
+
 ```sh
 touch cypress.json
 ```
 
-`./cypress.json`に、以下の内容をコピペする
+`./cypress.json`に、以下の内容をコピペします。
+
 ```json
 {}
 ```
 
 ### 9. テストファイルの作成
 
-テストファイルを作成する
+VisualRegressionTestを実行するためのテストファイルを作成します。
+
 ```sh
 mkdir -p ./cypress/integration
 touch cypress/integration/index.spec.js
 ```
 
-以下の内容を`./cypress/integration/index.spec.js`にコピペ
+以下の内容を`./cypress/integration/index.spec.js`にコピペします。
+
 ```
 context("index.html", () => {
   beforeEach(() => {
@@ -109,29 +121,31 @@ context("index.html", () => {
 
 ### 10. Cypressが動作することの確認
 
-Cypressを実行する
+Cypressを実行します。
+
 ```sh
 npx cypress run
 ```
 
-以下のようにテストが実行されていれば良いです。
+以下のようにテストが実行されていれば、問題ありません。
 
 ![first-test.png](https://github.com/ksoga-graat/visual-regression-test-sample/blob/main/documents/screenshots/first-test.png)
 
-### 11. VisualRegressionTest用のプラグインを導入する
+### 11. VisualRegressionTest用プラグインの導入
 
 
-VisualRegressionTestをCypressで実行するために、次のプラグインを利用します。
+CypressでVisualRegressionTestを実行するために、次のプラグインを利用します。
 
 [Cypress Image Snapshot](https://github.com/jaredpalmer/cypress-image-snapshot)
 
-`cypress-image-snapshot`をインストールする
+`cypress-image-snapshot`をインストールします。
 
 ```sh
 npm install cypress-image-snapshot
 ```
 
-手順10でCypressを実行したときに、自動生成されている`./cypress/plugins/index.js`の中身を消して、以下の内容をコピペする
+手順10でCypressを実行したときに、自動生成されている`./cypress/plugins/index.js`の中身を消して、以下の内容をコピペします。
+
 ```js
 const {
   addMatchImageSnapshotPlugin,
@@ -142,15 +156,17 @@ module.exports = (on, config) => {
 };
 ```
 
-手順10でCypressを実行したときに、自動生成されている`./cypress/support/commands.js`の中身を消して、以下の内容をコピペする
+手順10でCypressを実行したときに、自動生成されている`./cypress/support/commands.js`の中身を消して、以下の内容をコピペします。
+
 ```commands.js
 import { addMatchImageSnapshotCommand } from 'cypress-image-snapshot/command';
 
 addMatchImageSnapshotCommand();
 ```
-### 12. VisualRegressionTestの基準となる画像を作成する
+### 12. VisualRegressionTestの基準となる画像を作成
 
-`./cypress/integration/index.spec.js`に以下をコピペする
+`./cypress/integration/index.spec.js`に以下をコピペします。
+
 ```js
 context("index.html", () => {
   beforeEach(() => {
@@ -163,12 +179,13 @@ context("index.html", () => {
 });
 ```
 
-以下を実行する
+以下を実行します。
+
 ```sh
 npx cypress run
 ```
 
-以下のようにテストが成功していれば良いです。
+以下のようにテストが成功していれば問題ありません。
 
 今回の実行結果は、`./cypress/snapshots/index.spec.js/index.html -- Layout is not broken.snap.png`に保存されており、これが基準となります。
 
@@ -176,7 +193,7 @@ npx cypress run
 
 ### 13. レイアウトが崩れるような修正をする
 
-`./public/index.html`に以下をコピペする
+`./public/index.html`に以下をコピペします。
 
 (今回の例: 他人が勝手にpタグにスタイルを追加してしまった)
 
@@ -187,13 +204,13 @@ npx cypress run
 
 ### 14. VisualRegressionTestを実行する
 
-テストを実行する
+テストを実行します。
 ```sh
 npx cypress run
 ```
 
-以下のようにテストが失敗していれば、VisualRegressionTestが実行されて、レイアウトの崩れを検知している。
+以下のようにテストが失敗していれば、VisualRegressionTestが実行されて、レイアウトの崩れを検知しています。
 
-検知結果のスクリーンショットは`./cypress/snapshots/index.spec.js/__diff_output__/index.html -- Layout is not broken.diff.png`に保存されている。
+検知結果のスクリーンショットは`./cypress/snapshots/index.spec.js/__diff_output__/index.html -- Layout is not broken.diff.png`に保存されています。
 
 ![faild.png](https://github.com/ksoga-graat/visual-regression-test-sample/blob/main/documents/snapshots/index.spec.js/__diff_output__/index.html--Layout-is-not-broken.diff.png)
